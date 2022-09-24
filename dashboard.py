@@ -1,11 +1,24 @@
 import streamlit as st
 import time
 import numpy as np
+import pandas as pd
+
+
+st.title("Finance")
+
+st.header("Financial Data")
+
+st.subheader("Subheader")
+
+st.write("info")
 
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
 last_rows = np.random.randn(1, 1)
 chart = st.line_chart(last_rows)
+
+df = pd.DataFrame(np.random.randn(50,20), columns=('col %d' % i for i in range(20)))
+st.dataframe(df)
 
 for i in range(1, 101):
     new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
